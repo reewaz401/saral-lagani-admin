@@ -19,8 +19,8 @@ import Link from 'src/components/Link';
 import { useRouter } from 'next/router';
 
 import { useTranslation } from 'react-i18next';
-import Logo from 'src/components/Logo';
-import Scrollbar from 'src/components/Scrollbar';
+// import Logo from 'src/components/Logo';
+// import Scrollbar from 'src/components/Scrollbar';
 
 const icons = {
   Auth0: '/static/images/logo/auth0.svg',
@@ -39,54 +39,54 @@ const Content = styled(Box)(
 
 const MainContent = styled(Box)(
   () => `
-  padding: 0 0 0 440px;
+  padding: 0 0 0 30px;
   width: 100%;
   display: flex;
   align-items: center;
 `
 );
 
-const SidebarWrapper = styled(Box)(
-  ({ theme }) => `
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: ${theme.colors.alpha.white[100]};
-    width: 440px;
-`
-);
+// const SidebarWrapper = styled(Box)(
+//   ({ theme }) => `
+//     position: fixed;
+//     left: 0;
+//     top: 0;
+//     height: 100%;
+//     background: ${theme.colors.alpha.white[100]};
+//     width: 440px;
+// `
+// );
 
-const SidebarContent = styled(Box)(
-  ({ theme }) => `
-  display: flex;
-  flex-direction: column;
-  padding: ${theme.spacing(6)};
-`
-);
+// const SidebarContent = styled(Box)(
+//   ({ theme }) => `
+//   display: flex;
+//   flex-direction: column;
+//   padding: ${theme.spacing(6)};
+// `
+// );
 
-const CardImg = styled(Card)(
-  ({ theme }) => `
-    border-radius: 100%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 1px solid ${theme.colors.alpha.black[10]};
-    transition: ${theme.transitions.create(['border'])};
-    position: absolute;
+// const CardImg = styled(Card)(
+//   ({ theme }) => `
+//     border-radius: 100%;
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     position: relative;
+//     border: 1px solid ${theme.colors.alpha.black[10]};
+//     transition: ${theme.transitions.create(['border'])};
+//     position: absolute;
 
-    &:hover {
-      border-color: ${theme.colors.primary.main};
-    }
-`
-);
+//     &:hover {
+//       border-color: ${theme.colors.primary.main};
+//     }
+// `
+// );
 
-const TypographyH1 = styled(Typography)(
-  ({ theme }) => `
-    font-size: ${theme.typography.pxToRem(33)};
-`
-);
+// const TypographyH1 = styled(Typography)(
+//   ({ theme }) => `
+//     font-size: ${theme.typography.pxToRem(33)};
+// `
+// );
 
 function LoginCover() {
   const { method } = useAuth();
@@ -101,7 +101,7 @@ function LoginCover() {
         <title>Login - Cover</title>
       </Head>
       <Content>
-        <SidebarWrapper
+         {/* <SidebarWrapper
           sx={{
             display: { xs: 'none', md: 'flex' }
           }}
@@ -203,7 +203,7 @@ function LoginCover() {
               </Box>
             </SidebarContent>
           </Scrollbar>
-        </SidebarWrapper>
+        </SidebarWrapper>  */}
         <MainContent>
           <Container
             sx={{
@@ -223,7 +223,7 @@ function LoginCover() {
                 <Typography
                   variant="h2"
                   sx={{
-                    mb: 1
+                    mb: 2
                   }}
                 >
                   {t('Sign in')}
