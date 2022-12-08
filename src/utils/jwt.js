@@ -20,30 +20,36 @@ export const sign = (payload, privateKey, header) => {
   return `${encodedHeader}.${encodedPayload}.${signature}`;
 };
 
+// export const decode = (token) => {
+//   const [encodedHeader, encodedPayload, signature] = token.split('.');
+//   const header = JSON.parse(atob(encodedHeader));
+//   const payload = JSON.parse(atob(encodedPayload));
+//   const now = new Date();
+
+//   if (now < header.expiresIn) {
+//     throw new Error('Expired token');
+//   }
+
+//   const verifiedSignature = btoa(
+//     Array.from(encodedPayload)
+//       .map((item, key) =>
+//         String.fromCharCode(
+//           item.charCodeAt(0) ^ JWT_SECRET[key % JWT_SECRET.length].charCodeAt(0)
+//         )
+//       )
+//       .join('')
+//   );
+
+//   if (verifiedSignature !== signature) {
+//     throw new Error('Invalid signature');
+//   }
+
+//   return payload;
+// };
+
 export const decode = (token) => {
-  const [encodedHeader, encodedPayload, signature] = token.split('.');
-  const header = JSON.parse(atob(encodedHeader));
-  const payload = JSON.parse(atob(encodedPayload));
-  const now = new Date();
-
-  if (now < header.expiresIn) {
-    throw new Error('Expired token');
-  }
-
-  const verifiedSignature = btoa(
-    Array.from(encodedPayload)
-      .map((item, key) =>
-        String.fromCharCode(
-          item.charCodeAt(0) ^ JWT_SECRET[key % JWT_SECRET.length].charCodeAt(0)
-        )
-      )
-      .join('')
-  );
-
-  if (verifiedSignature !== signature) {
-    throw new Error('Invalid signature');
-  }
-
+  const userInfo = token.split('.');
+  const payload = {userId: userInfo[1], accessToken: token};
   return payload;
 };
 

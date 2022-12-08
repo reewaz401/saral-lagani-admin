@@ -1,3 +1,6 @@
+import axios from "src/utils/axios";
+
+
 class UsersApi {
   getUsers() {
     const users = [
@@ -305,24 +308,10 @@ class UsersApi {
     return Promise.resolve(users);
   }
 
-  getUser() {
-    const user = {
-      id: '1',
-      name: 'Rafael Kunde',
-      avatar: '/static/images/avatars/1.jpg',
-      email: 'Monte.Auer31@yahoo.com',
-      jobtitle: 'Product Infrastructure Associate',
-      username: 'Delphia22',
-      location: 'Gislasonchester',
-      role: 'admin',
-      coverImg: '/static/images/placeholders/covers/1.jpg',
-      followers: '667',
-      description:
-        'Vestibulum rutrum rutrum neque. Aenean auctor gravida sem quam pede lobortis ligula, sit amet eleifend.',
-      posts: '8'
-    };
-
-    return Promise.resolve(user);
+  getUser(id) {
+    return new Promise((resolve, reject) => {
+      axios.get(`/user/get/userId/${id}`).then((res) => resolve(res.data)).catch((err) => reject(err));
+    });
   }
 }
 

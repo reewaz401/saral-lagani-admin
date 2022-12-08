@@ -102,7 +102,7 @@ export const AuthProvider = (props) => {
   const login = async (email, password) => {
     const accessToken = await authApi.login({ email, password });
     const user = await authApi.me(accessToken);
-
+    console.log(user)
     localStorage.setItem('accessToken', accessToken);
 
     dispatch({
@@ -119,11 +119,9 @@ export const AuthProvider = (props) => {
   };
 
   const register = async (email, name, password) => {
-    const accessToken = await authApi.register({ email, name, password });
-    const user = await authApi.me(accessToken);
-
-    localStorage.setItem('accessToken', accessToken);
-
+    const userInfo = await authApi.register({ email, name, password });
+    const user = await authApi.me(userInfo["userId"]);
+    localStorage.setItem('accessToken', userInfo["accessToken"]);
     dispatch({
       type: 'REGISTER',
       payload: {
