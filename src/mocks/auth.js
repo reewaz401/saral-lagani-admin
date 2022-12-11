@@ -27,7 +27,7 @@ class AuthApi {
     await wait(500);
     return new Promise((resolve, reject) => {
       try {
-        const user = users.find((_user) => _user.email === email);x
+        const user = users.find((_user) => _user.email === email);
         if (!user || user.password !== password) {
           reject(new Error('Email and password combination does not match'));
           return;
